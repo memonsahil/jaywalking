@@ -3,13 +3,13 @@ import { WORLD_SIZE, TILE_ASPECT_RATIO } from "../constants";
 import { truckUp, truckDown, boatUp, boatDown } from "../images";
 
 function MovingObject({ x, y, dir, type }) {
-  // Calculation for moving objects.
-  const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 1.8);
-  const yBase = y !== 2 ? yOffset * y : y * yOffset * 1.24;
-  const xBase = 50 - (50 / 9) * y;
-  const yAbs = yBase + yOffset * x;
+  // Calculation for placing each moving object.
+  const yOffset = ((100 / WORLD_SIZE) * TILE_ASPECT_RATIO) / 1.8;
+  const yBase = yOffset * y + yOffset / 1.5;
+  const xBase = 50 - (100 / 19) * y;
   const xAbs = xBase + (50 / 9) * x;
-  
+  const yAbs = yBase + yOffset * x;
+
   let src;
   if (type === "boat" && dir === "up") {
     src = boatUp;

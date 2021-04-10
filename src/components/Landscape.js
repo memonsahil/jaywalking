@@ -34,13 +34,13 @@ function Landscape() {
   return (
     <>
       {tiles.map((row, y) => {
-        const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 1.8);
-        const yBase = y !== 2 ? yOffset * y : y * yOffset * 1.24;
-        const xBase = 50 - (50 / 9) * y;
+        const yOffset = ((100 / WORLD_SIZE) * TILE_ASPECT_RATIO) / 1.8;
+        const yBase = y === 2 ? yOffset * (1 / 0.8) * y : yOffset * y;
+        const xBase = 50 - (100 / 18) * y;
         return row.map((tile, x) => {
-          const yAbs = yBase + yOffset * x;
-          const xAbs = xBase + (50 / 9) * x;
           const z = x + 100;
+          const xAbs = xBase + (50 / 9) * x;
+          const yAbs = yBase + yOffset * x;
           let src;
           if (tile === "grass") {
             src = grass;
