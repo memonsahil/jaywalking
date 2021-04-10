@@ -1,12 +1,12 @@
 import React from "react";
+import { RecoilRoot } from "recoil";
 import Jaywalking from "./components/Jaywalking";
 
 function App() {
   return (
-    <div className="App">
-      <h1>Jaywalking!</h1>
+    <RecoilRoot>
       <Jaywalking />
-    </div>
+    </RecoilRoot>
   );
 }
 

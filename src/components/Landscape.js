@@ -12,7 +12,6 @@ import { WORLD_SIZE, TILE_ASPECT_RATIO } from "../constants";
 import Tile from "./Tile";
 
 const tiles = [];
-const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 2.8);
 
 for (let i = WORLD_SIZE; i > 0; i--) {
   if (i === 1 || i === 6 || i === 9) {
@@ -31,15 +30,17 @@ for (let i = WORLD_SIZE; i > 0; i--) {
 }
 
 function Landscape() {
+  // Calculating and rendering each tile accordingly.
   return (
     <>
       {tiles.map((row, y) => {
-        const yBase = y !== 2 ? yOffset * y : y * yOffset * 1.25;
-        const xBase = 50 - (100 / 18) * y;
+        const yOffset = (100 / WORLD_SIZE) * (TILE_ASPECT_RATIO / 1.8);
+        const yBase = y !== 2 ? yOffset * y : y * yOffset * 1.24;
+        const xBase = 50 - (50 / 9) * y;
         return row.map((tile, x) => {
-          const z = x + 100;
           const yAbs = yBase + yOffset * x;
-          const xAbs = xBase + (100 / 18) * x;
+          const xAbs = xBase + (50 / 9) * x;
+          const z = x + 100;
           let src;
           if (tile === "grass") {
             src = grass;
@@ -57,7 +58,7 @@ function Landscape() {
             src = waterGrassBelow;
           }
 
-          return <Tile key={`${x}${y}`} src={src} x={xAbs} y={yAbs} z={z} />;
+          return <Tile alt={tile} src={src} x={xAbs} y={yAbs} z={z} />;
         });
       })}
     </>

@@ -1,8 +1,14 @@
 import React from "react";
 import Landscape from "./Landscape";
+import Trucks from "./Trucks";
 
 function World() {
-  return <Landscape />;
+  return (
+    <div className="world">
+      <Landscape />
+      <Trucks />
+    </div>
+  );
 }
 
 export default World;
