@@ -3,7 +3,7 @@ import { WORLD_SIZE, TILE_ASPECT_RATIO } from "../constants";
 import { truckUp, truckDown, boatUp, boatDown } from "../images";
 
 function MovingObject({ x, y, dir, type }) {
-  // Calculation for placing each moving object.
+  // Calculation for placing each moving object accordingly.
   const yOffset = ((100 / WORLD_SIZE) * TILE_ASPECT_RATIO) / 1.8;
   const yBase = yOffset * y + yOffset / 1.5;
   const xBase = 50 - (100 / 19) * y;
