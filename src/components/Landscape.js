@@ -30,7 +30,7 @@ for (let i = WORLD_SIZE; i > 0; i--) {
 }
 
 function Landscape() {
-  // Calculating and rendering of each tile accordingly.
+  // Calculating and rendering each tile accordingly.
   return (
     <>
       {tiles.map((row, y) => {
