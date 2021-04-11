@@ -15,7 +15,7 @@ function Trucks() {
   const [trucks, setTrucks] = useRecoilState(trucksState);
 
   const moveTrucks = useCallback(() => {
-    let trucksCopy = [...trucks]; // Create a copy of the entire trucks state.
+    let trucksCopy = [...trucks];
     trucksCopy = trucksCopy.map((truck) => {
       // Return a single truck object from trucksCopy and update its x value for moving.
       if (truck.dir === "up") {
@@ -35,7 +35,6 @@ function Trucks() {
     // Filter trucksCopy and check if a truck is present at
     // the initial tile on either side, i.e. at x = 1 || 7.
     if (!trucksCopy.filter((truck) => truck.x === 1 || truck.x === 7).length) {
-      // Push new truck objects to newTrucks.
       newTrucks.push({
         id: Math.random().toString(36).substr(2, 9),
         x: 9,
@@ -69,7 +68,13 @@ function Trucks() {
     <>
       {trucks.map((truck) => {
         return (
-          <MovingObject x={truck.x} y={truck.y} dir={truck.dir} type="truck" />
+          <MovingObject
+            key={truck.id}
+            x={truck.x}
+            y={truck.y}
+            dir={truck.dir}
+            type="truck"
+          />
         );
       })}
     </>
