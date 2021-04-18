@@ -2,6 +2,7 @@ import React from "react";
 import Landscape from "./Landscape";
 import Trucks from "./Trucks";
 import Boats from "./Boats";
+import Character from "./Character";
 
 function World() {
   return (
@@ -9,6 +10,7 @@ function World() {
       <Landscape />
       <Trucks />
       <Boats />
+      <Character />
     </div>
   );
 }

@@ -33,7 +33,7 @@ function Trucks() {
 
     const newTrucks = [];
     // Filter trucksCopy and check if a truck is present at
-    // the initial tile on either side, i.e. at x = 1 || 7.
+    // the starting point on either side, i.e. at x = 1 || 7.
     if (!trucksCopy.filter((truck) => truck.x === 1 || truck.x === 7).length) {
       newTrucks.push({
         id: Math.random().toString(36).substr(2, 9),
