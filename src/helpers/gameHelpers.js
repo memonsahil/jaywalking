@@ -4,11 +4,6 @@ const isTruckCollision = (character, trucks) => {
   });
 };
 
-const isDrowning = (character, boats) => {
-  const waterTileYIndexes = [1, 2];
-  
-};
-
 const isRidingBoat = (character, boats) => {
   return boats.some((boat) => {
     return boat.x === character.x && boat.y === character.y;
@@ -21,8 +16,18 @@ const getRiddenBoat = (character, boats) => {
   });
 };
 
+const isDrowning = (character, boats) => {
+  const waterTileYIndexes = [1, 2];
+  const isRiding = isRidingBoat(character, boats);
+  if (waterTileYIndexes.includes(character.y) && !isRiding) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const hasReachedGoal = (character) => {
-  character.y < 0;
+  return character.y < 0;
 };
 
 export {

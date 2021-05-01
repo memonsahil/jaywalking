@@ -1,7 +1,14 @@
 import React, { useEffect } from "react";
 import World from "./World";
 import Inputs from "./Inputs";
-import { useRecoilState, useRecoilValue } from "recoil";
+import { atom, useRecoilState, useRecoilValue } from "recoil";
+import {
+  isTruckCollision,
+  isDrowning,
+  isRidingBoat,
+  getRiddenBoat,
+  hasReachedGoal,
+} from "../helpers/gameHelpers";
 
 function Jaywalking() {
   // Character
@@ -20,7 +27,7 @@ function Jaywalking() {
 
   // Check for truck collision
   useEffect(() => {
-    if (isTruckCollision(character, trucks)) {
+    if (trucks && isTruckCollision(character, trucks)) {
       setGameOver(true);
       setCharacter({
         ...character,
@@ -31,7 +38,7 @@ function Jaywalking() {
 
   // Check for boat interaction
   useEffect(() => {
-    if (isDrowning(character, boats)) {
+    if (boats && isDrowning(character, boats)) {
       setGameOver(true);
       setCharacter({
         ...character,

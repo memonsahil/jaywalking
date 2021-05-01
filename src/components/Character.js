@@ -1,6 +1,12 @@
 import React from "react";
 import { atom, useRecoilValue } from "recoil";
-import { characterNE, characterNW, characterSE, characterSW } from "../images";
+import {
+  skull,
+  characterNE,
+  characterNW,
+  characterSE,
+  characterSW,
+} from "../images";
 import { WORLD_SIZE, TILE_ASPECT_RATIO } from "../constants";
 
 function Character() {
@@ -17,7 +23,9 @@ function Character() {
   const { x, y, dir } = useRecoilValue(characterState);
 
   let src;
-  if (dir === "up") {
+  if (character.dead) {
+    src = skull;
+  } else if (dir === "up") {
     src = characterNE;
   } else if (dir === "down") {
     src = characterSW;
