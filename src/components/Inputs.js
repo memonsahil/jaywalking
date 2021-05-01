@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { atom, useRecoilState, useRecoilValue } from "recoil";
 
 function Inputs() {
@@ -22,43 +22,55 @@ function Inputs() {
   }, [timer]);
 
   const keyPressHandler = useCallback(
-    (keyPress) => {
-      keyPress.preventDefault();
-      if (gameOver || !allowInput) {
+    (e) => {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+
+      if (gameOver) {
         return;
       }
 
-      if (keyPress.code() === "ArrowLeft") {
+      if (!allowInput) {
+        return;
+      }
+
+      setAllowInput(false);
+      timer.current = setTimeout(() => {
+        setAllowInput(true);
+      }, 350);
+
+      if (e.keyCode === 37) {
         // left
         setCharacter({
-          x: character.x > 0 ? character.x - 1 : character.x,
+          x: character.x > 0 ? character.x - 1 : 0,
           y: character.y,
           dir: "left",
         });
-      } else if (keyPress.code() === "ArrowRight") {
+      } else if (e.keyCode === 39) {
         // right
         setCharacter({
-          x: character.x < 8 ? character.x + 1 : character.x,
+          x: character.x < 8 ? character.x + 1 : 8,
           y: character.y,
           dir: "right",
         });
-      } else if (keyPress.code() === "ArrowUp") {
+      } else if (e.keyCode === 38) {
         // up
         setCharacter({
           x: character.x,
-          y: character.y > -1 ? character.y - 1 : character.y,
+          y: character.y > -1 ? character.y - 1 : 0,
           dir: "up",
         });
-      } else if (keyPress.code() === "ArrowDown") {
-        //down
+      } else if (e.keyCode === 40) {
+        // down
         setCharacter({
           x: character.x,
-          y: character.y < 8 ? character.y + 1 : character.y,
+          y: character.y < 8 ? character.y + 1 : 8,
           dir: "down",
         });
       }
     },
-    [gameOver, allowInput, setAllowInput, character, setCharacter]
+    [character, setCharacter, gameOver, allowInput, setAllowInput]
   );
 
   useEffect(() => {
