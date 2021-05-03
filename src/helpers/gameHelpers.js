@@ -1,39 +1,47 @@
+import { WATER_TILES_Y_INDEXES } from "../constants";
+
 const isTruckCollision = (character, trucks) => {
-  return trucks.some((truck) => {
-    return truck.x === character.x && truck.y === character.y;
-  });
-};
-
-const isRidingBoat = (character, boats) => {
-  return boats.some((boat) => {
-    return boat.x === character.x && boat.y === character.y;
-  });
-};
-
-const getRiddenBoat = (character, boats) => {
-  return boats.find((boat) => {
-    return boat.x === character.x && boat.y === character.y;
-  });
+  return trucks.some(
+    (truck) => truck.x === character.x && truck.y === character.y
+  );
 };
 
 const isDrowning = (character, boats) => {
-  const waterTileYIndexes = [1, 2];
-  const isRiding = isRidingBoat(character, boats);
-  if (waterTileYIndexes.includes(character.y) && !isRiding) {
+  const boatUnderCharacter = boats.some(
+    (boat) => boat.y === character.y && Math.abs(boat.x - character.x) <= 1
+  );
+  if (WATER_TILES_Y_INDEXES.includes(character.y) && !boatUnderCharacter) {
     return true;
   } else {
     return false;
   }
 };
 
+const getRiddenBoat = (character, boats) => {
+  return boats.find((boat) => {
+    return boat.y === character.y && Math.abs(boat.x - character.x) <= 1;
+  });
+};
+
+const isRidingBoat = (character, boats) => {
+  return boats.find((boat) => {
+    return boat.y === character.y && Math.abs(boat.x - character.x) <= 1;
+  });
+};
+
 const hasReachedGoal = (character) => {
-  return character.y < 0;
+  return character.y === -1;
+};
+
+const objectsIdentical = (o1, o2) => {
+  return JSON.stringify(o1) === JSON.stringify(o2);
 };
 
 export {
   isTruckCollision,
   isDrowning,
-  isRidingBoat,
   getRiddenBoat,
+  isRidingBoat,
   hasReachedGoal,
+  objectsIdentical,
 };

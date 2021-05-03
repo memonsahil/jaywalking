@@ -5,9 +5,10 @@ import { atom, useRecoilState, useRecoilValue } from "recoil";
 import {
   isTruckCollision,
   isDrowning,
-  isRidingBoat,
   getRiddenBoat,
+  isRidingBoat,
   hasReachedGoal,
+  objectsIdentical,
 } from "../helpers/gameHelpers";
 
 function Jaywalking() {
@@ -38,16 +39,22 @@ function Jaywalking() {
 
   // Check for boat interaction
   useEffect(() => {
-    if (boats && isDrowning(character, boats)) {
-      setGameOver(true);
-      setCharacter({
-        ...character,
-        dead: true,
-      });
-    } else if (isRidingBoat(character, boats)) {
+    if (boats && isRidingBoat(character, boats)) {
       const boat = getRiddenBoat(character, boats);
+      if (
+        !objectsIdentical(character, { ...character, x: boat.x, y: boat.y })
+      ) {
+        setCharacter({ ...character, x: boat.x, y: boat.y });
+      }
+    } else if (boats && isDrowning(character, boats)) {
+      if (!gameOver) {
+        setGameOver(true);
+      }
+      if (!character.dead) {
+        setCharacter({ ...character, dead: true });
+      }
     }
-  }, [character, boats, setCharacter, setGameOver]);
+  }, [boats, character, setCharacter, gameOver, setGameOver]);
 
   // Reaching goal
   useEffect(() => {

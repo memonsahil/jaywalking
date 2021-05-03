@@ -1,5 +1,5 @@
 import React from "react";
-import { atom, useRecoilValue } from "recoil";
+import { atom, useRecoilState, useRecoilValue } from "recoil";
 import {
   skull,
   characterNE,
@@ -20,27 +20,27 @@ function Character() {
     },
   });
 
-  const { x, y, dir } = useRecoilValue(characterState);
-
+  const character = useRecoilValue(characterState);
   let src;
+
   if (character.dead) {
     src = skull;
-  } else if (dir === "up") {
+  } else if (character.dir === "up") {
     src = characterNE;
-  } else if (dir === "down") {
+  } else if (character.dir === "down") {
     src = characterSW;
-  } else if (dir === "left") {
+  } else if (character.dir === "left") {
     src = characterNW;
-  } else if (dir === "right") {
+  } else if (character.dir === "right") {
     src = characterSE;
   }
 
   // Calculation for placing the moving character.
   const yOffset = ((100 / WORLD_SIZE) * TILE_ASPECT_RATIO) / 1.8;
-  const yBase = yOffset * y + yOffset / 1.5;
-  const xBase = 50 - (100 / 19) * y;
-  const xAbs = xBase + (50 / 9) * x;
-  const yAbs = yBase + yOffset * x;
+  const yBase = yOffset * character.y + yOffset / 1.5;
+  const xBase = 50 - (100 / 19) * character.y;
+  const xAbs = xBase + (50 / 9) * character.x;
+  const yAbs = yBase + yOffset * character.x;
 
   return (
     <img

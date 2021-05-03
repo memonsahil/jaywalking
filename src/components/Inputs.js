@@ -35,6 +35,7 @@ function Inputs() {
         return;
       }
 
+      // Delay between each keyPress
       setAllowInput(false);
       timer.current = setTimeout(() => {
         setAllowInput(true);

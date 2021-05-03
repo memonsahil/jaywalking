@@ -1,2 +1,5 @@
-export const WORLD_SIZE = 9;
-export const TILE_ASPECT_RATIO = 1 / 0.75;
+const WORLD_SIZE = 9;
+const TILE_ASPECT_RATIO = 1 / 0.75;
+const WATER_TILES_Y_INDEXES = [1, 2];
+
+export { WORLD_SIZE, TILE_ASPECT_RATIO, WATER_TILES_Y_INDEXES };
