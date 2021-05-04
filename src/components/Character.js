@@ -1,5 +1,5 @@
 import React from "react";
-import { atom, useRecoilState, useRecoilValue } from "recoil";
+import { atom, useRecoilValue } from "recoil";
 import {
   skull,
   characterNE,
