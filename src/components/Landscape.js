@@ -57,7 +57,7 @@ function Landscape() {
           } else if (tile === "waterGrassBelow") {
             src = waterGrassBelow;
           }
-          return <Tile alt={tile} src={src} x={xAbs} y={yAbs} z={z} />;
+          return <Tile key={`${x}${y}`} alt={tile} src={src} x={xAbs} y={yAbs} z={z} />;
         });
       })}
     </>
