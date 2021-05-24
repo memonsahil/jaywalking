@@ -24,7 +24,7 @@ img {
   position: absolute;
   z-index: 1000;
   transform: translate(-50%, -50%);
-  transition: top 0.35s linear, left 0.35s linear, transform 0.35s linear;
+  transition: top 0.35s linear, left 0.35s linear, transform 0.2s linear;
 }
 
 .boat,
@@ -36,7 +36,7 @@ img {
   z-index: 900;
   width: 5vw;
   transform: translateX(-50%);
-  transition: top 0.35s linear, left 0.35s linear, opacity 0.5s linear;
+  transition: top 0.35s linear, left 0.35s linear, opacity 0.7s linear;
 }
 
 .truck {
@@ -44,5 +44,5 @@ img {
   z-index: 1100;
   width: 5vw;
   height: 5vw;
-  transition: top 0.35s linear, left 0.35s linear, opacity 0.5s linear;
+  transition: top 0.4s linear, left 0.4s linear, opacity 0.7s linear;
 }

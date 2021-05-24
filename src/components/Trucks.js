@@ -8,8 +8,10 @@ function Trucks() {
     key: "trucksState",
     default: [
       // Converting id to string for better randomisation, so that the id values do not end up repeating.
+      { x: -1, y: 4, dir: "down", id: Math.random().toString(36).substr(2, 9) },
       { x: -1, y: 5, dir: "down", id: Math.random().toString(36).substr(2, 9) },
       { x: 9, y: 6, dir: "up", id: Math.random().toString(36).substr(2, 9) },
+      { x: 9, y: 7, dir: "up", id: Math.random().toString(36).substr(2, 9) },
     ],
   });
   const [trucks, setTrucks] = useRecoilState(trucksState);
@@ -37,15 +39,27 @@ function Trucks() {
     if (!trucksCopy.filter((truck) => truck.x === 1 || truck.x === 7).length) {
       newTrucks.push({
         id: Math.random().toString(36).substr(2, 9),
-        x: 9,
-        y: 6,
-        dir: "up",
+        x: -1,
+        y: 4,
+        dir: "down",
       });
       newTrucks.push({
         id: Math.random().toString(36).substr(2, 9),
         x: -1,
         y: 5,
         dir: "down",
+      });
+      newTrucks.push({
+        id: Math.random().toString(36).substr(2, 9),
+        x: 9,
+        y: 6,
+        dir: "up",
+      });
+      newTrucks.push({
+        id: Math.random().toString(36).substr(2, 9),
+        x: 9,
+        y: 7,
+        dir: "up",
       });
     }
 

@@ -39,7 +39,7 @@ function Inputs() {
       setAllowInput(false);
       timer.current = setTimeout(() => {
         setAllowInput(true);
-      }, 250);
+      }, 100);
 
       if (e.keyCode === 37) {
         // left
