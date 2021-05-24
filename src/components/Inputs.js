@@ -16,7 +16,7 @@ function Inputs() {
 
   const gameOver = useRecoilValue(atom({ key: "gameOverState" }));
 
-  let timer = useRef(false);
+  let timer = useRef();
   useEffect(() => {
     return clearTimeout(timer.current);
   }, [timer]);
@@ -35,11 +35,11 @@ function Inputs() {
         return;
       }
 
-      // Delay between each keyPress
+      // Delay between each key press.
       setAllowInput(false);
       timer.current = setTimeout(() => {
         setAllowInput(true);
-      }, 100);
+      }, 250);
 
       if (e.keyCode === 37) {
         // left
