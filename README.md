@@ -1,6 +1,8 @@
 # jaywalking
 
-## Introduction
+![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)
+![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
+![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
 A game created using [React](https://reactnative.dev) and [Recoil](https://recoiljs.org).
 
