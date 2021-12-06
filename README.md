@@ -4,7 +4,7 @@
 ![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)
 ![Open Source Love svg2](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)
 
-A JavaScript game created using [React](https://reactnative.dev) and [Recoil](https://recoiljs.org).
+A JavaScript game created using [React](https://reactjs.org) and [Recoil](https://recoiljs.org).
 
 ## Gif
 
